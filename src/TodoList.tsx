@@ -9,15 +9,19 @@ interface Props {
 
 const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
   const toggleComplete = (id: number) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
+    setTodos(updatedTodos);
+    // Update local storage
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const filteredTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(filteredTodos);
+    // Update local storage
+    localStorage.setItem("todos", JSON.stringify(filteredTodos));
   };
 
   return (

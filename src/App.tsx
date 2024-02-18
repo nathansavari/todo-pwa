@@ -31,6 +31,7 @@ const App: React.FC = () => {
         <input
           type="text"
           value={input}
+          placeholder="The next thing I need todo"
           onChange={(e) => setInput(e.target.value)}
         />
         <button type="submit">Add Todo</button>

@@ -9,10 +9,19 @@ interface Props {
 
 const TodoItem: React.FC<Props> = ({ todo, toggleComplete, deleteTodo }) => {
   return (
-    <li style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
-      {todo.text}
-      <button onClick={() => toggleComplete(todo.id)}>Toggle</button>
-      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+    <li>
+      <p style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
+        {todo.text}
+      </p>
+
+      <div>
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={() => toggleComplete(todo.id)}
+        />
+        <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      </div>
     </li>
   );
 };
