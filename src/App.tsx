@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList";
+import Photo from "./Photo";
 import { Todo } from "./types";
 import "./App.css";
 
@@ -37,6 +38,7 @@ const App: React.FC = () => {
         <button type="submit">Ajouter une tâche</button>
       </form>
       <TodoList todos={todos} setTodos={setTodos} />
+      <Photo />
     </div>
   );
 };
