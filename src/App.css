@@ -84,6 +84,10 @@ li div {
   justify-content: flex-end;
 }
 
+.offline {
+  color: #a69c0f;
+}
+
 @media (max-width: 768px) {
   input[type="text"] {
     width: 150px;
