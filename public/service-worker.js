@@ -1,34 +1,45 @@
-const CACHE_NAME = "version-1";
-const urlsToCache = ["index.html", "offline.html"];
+const CACHE_NAME = "todo-app-cache-v1";
+const urlsToCache = [
+  "/",
+  "/index.html",
+  "/static/js/bundle.js", // Adjust based on your build output
+  "/static/js/0.chunk.js", // Include all necessary assets
+  "/static/js/main.chunk.js",
+  "/static/css/main.chunk.css", // Adjust paths as necessary
+  // Add other assets you want to cache
+];
 
-// Install SW
+// Install a service worker
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
+      console.log("Opened cache");
       return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Listen for requests
+// Cache and return requests
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then(() => {
-      return fetch(event.request).catch(() => caches.match("offline.html"));
+    caches.match(event.request).then((response) => {
+      // Cache hit - return response
+      if (response) {
+        return response;
+      }
+      return fetch(event.request);
     })
   );
 });
 
-// Activate the SW
+// Update a service worker
 self.addEventListener("activate", (event) => {
-  const cacheWhitelist = [];
-  cacheWhitelist.push(CACHE_NAME);
-
+  const cacheWhitelist = ["todo-app-cache-v1"];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
-      Promise.all(
+      return Promise.all(
         cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
         })
