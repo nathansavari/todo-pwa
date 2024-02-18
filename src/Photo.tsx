@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 const Photo = () => {
-  const videoRef = useRef(null);
+  const videoRef = useRef<any>(null);
 
   const handleStartCamera = async () => {
     try {
