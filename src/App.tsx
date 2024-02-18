@@ -31,10 +31,10 @@ const App: React.FC = () => {
         <input
           type="text"
           value={input}
-          placeholder="The next thing I need todo"
+          placeholder="Nouvelle tâche"
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit">Add Todo</button>
+        <button type="submit">Ajouter une tâche</button>
       </form>
       <TodoList todos={todos} setTodos={setTodos} />
     </div>

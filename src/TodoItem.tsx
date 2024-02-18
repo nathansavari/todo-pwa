@@ -15,12 +15,15 @@ const TodoItem: React.FC<Props> = ({ todo, toggleComplete, deleteTodo }) => {
       </p>
 
       <div>
+        {todo.completed ? (
+          <button onClick={() => deleteTodo(todo.id)}>Supprimer</button>
+        ) : null}
+
         <input
           type="checkbox"
           checked={todo.completed}
           onChange={() => toggleComplete(todo.id)}
         />
-        <button onClick={() => deleteTodo(todo.id)}>Delete</button>
       </div>
     </li>
   );

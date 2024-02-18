@@ -19,7 +19,7 @@ form {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
-  width: 90vw;
+  width: 90%;
 }
 
 input[type="text"] {
@@ -45,32 +45,31 @@ button:hover {
 
 ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  width: 90%;
 }
 
 li {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Space between text and button */
-
-  width: 90vw; /* Full width of the container */
-  max-width: 600px; /* Max width for better readability */
-  padding: 10px 20px; /* Reduced padding for a sleek look */
-  margin: 10px auto; /* Center items and add space between them */
+  padding: 8px;
   background-color: #f8f9fa; /* Light background for each todo item */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 5px;
+  border: 2px solid rgb(203, 208, 255);
+  margin: 10px 0;
 }
 
 li button {
   padding: 5px 10px; /* Padding for better touch */
-  width: auto; /* Auto width based on content */
+  width: auto;
+
   font-size: 16px; /* Larger font for readability */
-  color: #fff; /* White text for contrast */
+  color: #000; /* White text for contrast */
   border: none; /* Remove default border */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
-  background-color: #dc3545;
+  background-color: rgba(221, 221, 221, 0);
 }
 
 li button:hover {
@@ -78,7 +77,8 @@ li button:hover {
 }
 
 li div {
-  width: 90vw;
+  height: auto;
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -96,7 +96,6 @@ li div {
 
   button {
     width: 100%;
-    margin-top: 10px;
   }
 }
 
